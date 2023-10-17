@@ -263,6 +263,7 @@ public class coctelesIU extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 // Captura alguna excepcion al ejecutar y la muestra por consola
                 Logger.getLogger(coctelesIU.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "No se pudo agregar el coctel " + nombre, "Error", JOptionPane.ERROR_MESSAGE);
             }
             // Llama al método desconectar - Cierra la conexión con la base de datos
             con.desconectar();
