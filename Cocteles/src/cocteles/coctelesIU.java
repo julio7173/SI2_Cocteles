@@ -236,7 +236,7 @@ public class coctelesIU extends javax.swing.JFrame {
             // Llama al metodo conectar para obtener la conexion
             Connection jdbc = con.conctar();
             // Variable con la sentencia SQL - Insertar datos
-            String sql = "INSERT INTO coctel(nombre, tiempoPreparacion, popularidad) VALUES(?, ?, ?)";
+            String sql = "INSERT INTO coctel( nombre, tiempoPreparacion, popularidad) VALUES(?, ?, ?)";
             // Variable para preparar y ejecutar la sentencia SQL
             PreparedStatement ps;
             // Variable que almacena el número de filas afectadas por la operación
