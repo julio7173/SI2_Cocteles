@@ -10,7 +10,7 @@ public class vistaCatalogo extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -40,16 +40,22 @@ public class vistaCatalogo extends javax.swing.JFrame {
         baseCatalogo.setBackground(new java.awt.Color(48, 48, 48));
 
         botonCurso1.setBackground(new java.awt.Color(217, 217, 217));
+        botonCurso1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCatalogo/1.png"))); // NOI18N
 
         botonCurso2.setBackground(new java.awt.Color(217, 217, 217));
+        botonCurso2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCatalogo/2.png"))); // NOI18N
 
         botonCurso3.setBackground(new java.awt.Color(217, 217, 217));
+        botonCurso3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCatalogo/3.png"))); // NOI18N
 
         botonCurso4.setBackground(new java.awt.Color(217, 217, 217));
+        botonCurso4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCatalogo/4.png"))); // NOI18N
 
         botonCurso5.setBackground(new java.awt.Color(217, 217, 217));
+        botonCurso5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCatalogo/5.png"))); // NOI18N
 
         botonCurso6.setBackground(new java.awt.Color(217, 217, 217));
+        botonCurso6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCatalogo/6.png"))); // NOI18N
 
         tituloCurso1.setBackground(new java.awt.Color(255, 255, 255));
         tituloCurso1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
