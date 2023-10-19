@@ -25,6 +25,7 @@ public class formularioInscripcion extends javax.swing.JFrame {
         labelCurso = new javax.swing.JLabel();
         campoCursos = new javax.swing.JComboBox<>();
         botonInscribirse = new javax.swing.JButton();
+        botonAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(800, 500));
@@ -66,6 +67,16 @@ public class formularioInscripcion extends javax.swing.JFrame {
         botonInscribirse.setForeground(new java.awt.Color(0, 0, 0));
         botonInscribirse.setText("I N S C R I B I R S E");
 
+        botonAtras.setBackground(new java.awt.Color(217, 217, 217));
+        botonAtras.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        botonAtras.setForeground(new java.awt.Color(0, 0, 0));
+        botonAtras.setText("<");
+        botonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAtrasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout baseFormularioLayout = new javax.swing.GroupLayout(baseFormulario);
         baseFormulario.setLayout(baseFormularioLayout);
         baseFormularioLayout.setHorizontalGroup(
@@ -86,13 +97,18 @@ public class formularioInscripcion extends javax.swing.JFrame {
                                 .addComponent(campoCursos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(baseFormularioLayout.createSequentialGroup()
                         .addGap(313, 313, 313)
-                        .addComponent(botonInscribirse)))
+                        .addComponent(botonInscribirse))
+                    .addGroup(baseFormularioLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(botonAtras)))
                 .addContainerGap(254, Short.MAX_VALUE))
         );
         baseFormularioLayout.setVerticalGroup(
             baseFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(baseFormularioLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(20, 20, 20)
+                .addComponent(botonAtras)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,6 +143,12 @@ public class formularioInscripcion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
+        this.dispose();
+        vistaCatalogo catalogo = new vistaCatalogo();
+        catalogo.setVisible(true);
+    }//GEN-LAST:event_botonAtrasActionPerformed
+
     public static void main(String args[]) {
         //Ccambiamos el LookAndFell de la ventana
         try {
@@ -145,6 +167,7 @@ public class formularioInscripcion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel baseFormulario;
+    private javax.swing.JButton botonAtras;
     private javax.swing.JButton botonInscribirse;
     private javax.swing.JTextField campoCI;
     private javax.swing.JTextField campoCorreo;
