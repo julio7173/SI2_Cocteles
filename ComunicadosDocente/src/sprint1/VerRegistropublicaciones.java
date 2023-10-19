@@ -4,6 +4,16 @@
  */
 package cocteles;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import javax.swing.UIManager;
+import database.conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 /**
  *
  * @author canta
@@ -13,8 +23,11 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
     /**
      * Creates new form publicaciones
      */
+     conexion jdbc = new conexion();
     public VerRegistropublicaciones() {
         initComponents();
+         pack();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -44,6 +57,11 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setText("X");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -60,6 +78,11 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,6 +160,16 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
