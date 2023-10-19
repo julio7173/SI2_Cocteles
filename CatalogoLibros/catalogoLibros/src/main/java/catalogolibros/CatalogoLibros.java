@@ -8,7 +8,7 @@ package catalogolibros;
  *
  * @author Usuario
  */
-public class CatalogoLibros {
+public class catalogoLibros {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
