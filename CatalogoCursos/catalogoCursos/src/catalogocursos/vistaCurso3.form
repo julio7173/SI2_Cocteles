@@ -83,7 +83,8 @@
                                   <Component id="botonAtras" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
                                   <Component id="titulo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="327" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+                                  <Component id="botonInscrito3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="banner" min="-2" pref="700" max="-2" attributes="0"/>
                           </Group>
@@ -124,6 +125,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="titulo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botonAtras" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonInscrito3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="banner" min="-2" pref="240" max="-2" attributes="0"/>
@@ -168,6 +170,23 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAtrasActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="botonInscrito3">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="d9" green="d9" red="d9" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xbf;Estas inscrito?"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonInscrito3ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="titulo">

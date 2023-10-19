@@ -19,6 +19,7 @@ public class vistaCurso2 extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         baseCatalogo = new javax.swing.JPanel();
         botonAtras = new javax.swing.JButton();
+        botonInscrito2 = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
         banner = new javax.swing.JLabel();
         descripcion = new javax.swing.JLabel();
@@ -50,6 +51,16 @@ public class vistaCurso2 extends javax.swing.JFrame {
         botonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAtrasActionPerformed(evt);
+            }
+        });
+
+        botonInscrito2.setBackground(new java.awt.Color(217, 217, 217));
+        botonInscrito2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        botonInscrito2.setForeground(new java.awt.Color(0, 0, 0));
+        botonInscrito2.setText("¿Estas inscrito?");
+        botonInscrito2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonInscrito2ActionPerformed(evt);
             }
         });
 
@@ -118,15 +129,6 @@ public class vistaCurso2 extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(baseCatalogoLayout.createSequentialGroup()
-                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(baseCatalogoLayout.createSequentialGroup()
-                                .addComponent(botonAtras)
-                                .addGap(274, 274, 274)
-                                .addComponent(titulo)
-                                .addGap(327, 327, 327))
-                            .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(50, Short.MAX_VALUE))
-                    .addGroup(baseCatalogoLayout.createSequentialGroup()
                         .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(baseCatalogoLayout.createSequentialGroup()
                                 .addComponent(descripcion)
@@ -144,7 +146,17 @@ public class vistaCurso2 extends javax.swing.JFrame {
                         .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(duracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cotenidoDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(81, 81, 81))))
+                        .addGap(81, 81, 81))
+                    .addGroup(baseCatalogoLayout.createSequentialGroup()
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(baseCatalogoLayout.createSequentialGroup()
+                                .addComponent(botonAtras)
+                                .addGap(274, 274, 274)
+                                .addComponent(titulo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonInscrito2))
+                            .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(50, Short.MAX_VALUE))))
         );
         baseCatalogoLayout.setVerticalGroup(
             baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +164,8 @@ public class vistaCurso2 extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titulo)
-                    .addComponent(botonAtras))
+                    .addComponent(botonAtras)
+                    .addComponent(botonInscrito2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -194,6 +207,12 @@ public class vistaCurso2 extends javax.swing.JFrame {
         catalogo.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
 
+    private void botonInscrito2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInscrito2ActionPerformed
+        this.dispose();
+        formularioInscripcion formulario = new formularioInscripcion();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_botonInscrito2ActionPerformed
+
     public static void main(String args[]) {
         //Ccambiamos el LookAndFell de la ventana
         try {
@@ -214,6 +233,7 @@ public class vistaCurso2 extends javax.swing.JFrame {
     private javax.swing.JLabel banner;
     private javax.swing.JPanel baseCatalogo;
     private javax.swing.JButton botonAtras;
+    private javax.swing.JButton botonInscrito2;
     private javax.swing.JLabel contenidoDescripcion;
     private javax.swing.JLabel contenidoRequisitos;
     private javax.swing.JLabel cotenidoDuracion;
