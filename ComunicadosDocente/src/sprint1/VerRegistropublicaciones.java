@@ -8,7 +8,6 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import com.mysql.cj.jdbc.JdbcStatement;
 import javax.swing.UIManager;
 import database.conexion;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -20,6 +19,11 @@ import javax.swing.JTextField;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import java.sql.PreparedStatement;
+import java.sql.PreparedStatement;
+
+
+
 
 /**
  *
@@ -44,9 +48,7 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
        // mostrar();    
         
     }
-   
-        
-    
+  
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,7 +83,6 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
             String query = "select * from registroprof;";
             
             ResultSet consulta = jdbc.consultarBD(query);
-            //ArrayList<String> a = new ArrayList<String>();
             while(consulta.next()){
                 
                 String registro = consulta.getString("registro2");
@@ -100,6 +101,9 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }
+
+    
+    
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -243,8 +247,40 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         // TODO add your handling code here:
-     
-   
+    /**                                           
+    DefaultTableModel model = (DefaultTableModel) tablaregistro.getModel();
+    int selectedRow = tablaregistro.getSelectedRow();
+
+    if (selectedRow != -1) {
+        String registro = (String) model.getValueAt(selectedRow, 0);
+
+        // Construct the SQL query to delete the record based on "registro"
+        String deleteQuery = "DELETE FROM registroprof WHERE registro2 ='"+registro+"'";
+
+        
+
+        try {
+        
+            this.jdbc.consultarBD(deleteQuery);
+
+            int rowsDeleted =1;
+            if (rowsDeleted > 0) {
+                // Data was successfully deleted from the database
+                model.removeRow(selectedRow); // Remove the row from the JTable
+            } else {
+                JOptionPane.showMessageDialog(this, "Record not found or couldn't be deleted.");
+            }
+
+        } catch (SQLException ex) {
+            // Handle any SQL exceptions here
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error deleting record: " + ex.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(VerRegistropublicaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+    }*/
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked

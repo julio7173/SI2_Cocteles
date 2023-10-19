@@ -62,7 +62,6 @@ public class publicaciones extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        camporegistro.setText("Escribe tu publicacion");
         camporegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 camporegistroActionPerformed(evt);
