@@ -3,9 +3,9 @@ package catalogocursos;
 import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.UIManager;
 
-public class vistaCurso1 extends javax.swing.JFrame {
+public class vistaCurso3 extends javax.swing.JFrame {
 
-    public vistaCurso1() {
+    public vistaCurso3() {
         initComponents();
         pack();
         setLocationRelativeTo(null);
@@ -56,9 +56,9 @@ public class vistaCurso1 extends javax.swing.JFrame {
         titulo.setBackground(new java.awt.Color(48, 48, 48));
         titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setText("Curso 1");
+        titulo.setText("Curso 3");
 
-        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCursos/1.png"))); // NOI18N
+        banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCursos/3.png"))); // NOI18N
         banner.setText("jLabel1");
 
         descripcion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -205,7 +205,7 @@ public class vistaCurso1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaCurso1().setVisible(true);
+                new vistaCurso3().setVisible(true);
             }
         });
     }
