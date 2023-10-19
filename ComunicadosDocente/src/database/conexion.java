@@ -2,15 +2,20 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
+
 
 public class conexion {
     // Atributos para la conexion con la base de datos
-    String url = "jdbc:mysql://f02e-181-115-133-123.ngrok-free.app:3306/"; // Direccion de la base de datos
-    String db = "cocteles"; // NOmbre de la base de datos
+    String url = "jdbc:mysql://localhost:3308/"; // Direccion de la base de datos
+    String db = "registro"; // NOmbre de la base de datos
     String user = "root"; // Nombre de usuario
-    String password = ""; // Contraseña de usuario
+    String password =""; // Contraseña de usuario
     String driver = "com.mysql.cj.jdbc.Driver"; // Controlador JDBC
+    
+    public PreparedStatement pst;
     
     Connection jdbc; // OBjeto que representa la conexion
 
@@ -41,6 +46,15 @@ public class conexion {
         } catch (SQLException e) {
             // IMprime un mensaje - ERROR
             System.out.println("Hubo un error al finalizar la conexión " + e);
+        }
+    }
+    public ResultSet consultarBD(String query) throws SQLException, Exception{
+        try {
+            System.out.println(query);
+            pst = jdbc.prepareStatement(query);
+            return pst.executeQuery();
+        } catch (Exception e) {
+            throw new Exception("Error al consultar la BD");
         }
     }
 }

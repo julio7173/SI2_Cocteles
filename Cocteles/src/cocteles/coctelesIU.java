@@ -50,9 +50,7 @@ public class coctelesIU extends javax.swing.JFrame {
         nombreCoctel.setForeground(new java.awt.Color(255, 255, 255));
         nombreCoctel.setText("Nombre del Coctel");
 
-        campoNombre.setBackground(new java.awt.Color(255, 255, 255));
         campoNombre.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        campoNombre.setForeground(new java.awt.Color(0, 0, 0));
         campoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 campoNombreKeyTyped(evt);
@@ -64,9 +62,12 @@ public class coctelesIU extends javax.swing.JFrame {
         timepoPreparacion.setForeground(new java.awt.Color(255, 255, 255));
         timepoPreparacion.setText("Tiempo de preparación");
 
-        campoTiempo.setBackground(new java.awt.Color(255, 255, 255));
         campoTiempo.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        campoTiempo.setForeground(new java.awt.Color(0, 0, 0));
+        campoTiempo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoTiempoActionPerformed(evt);
+            }
+        });
         campoTiempo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 campoTiempoKeyTyped(evt);
@@ -78,18 +79,14 @@ public class coctelesIU extends javax.swing.JFrame {
         popularidad.setForeground(new java.awt.Color(255, 255, 255));
         popularidad.setText("Popularidad del Coctel");
 
-        campoPopularidad.setBackground(new java.awt.Color(255, 255, 255));
         campoPopularidad.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
-        campoPopularidad.setForeground(new java.awt.Color(0, 0, 0));
         campoPopularidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 campoPopularidadKeyTyped(evt);
             }
         });
 
-        botonAgregar.setBackground(new java.awt.Color(255, 255, 255));
         botonAgregar.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
-        botonAgregar.setForeground(new java.awt.Color(0, 0, 0));
         botonAgregar.setText("Agregar");
         botonAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -215,7 +212,7 @@ public class coctelesIU extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPopularidadKeyTyped
 
     private void campoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoNombreKeyTyped
-        sizeName(campoNombre, 20, evt);
+        sizeName(campoNombre, 200, evt);
     }//GEN-LAST:event_campoNombreKeyTyped
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
@@ -315,6 +312,10 @@ public class coctelesIU extends javax.swing.JFrame {
             con.desconectar();
         }
     }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void campoTiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoTiempoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoTiempoActionPerformed
 
     public static void main(String args[]) {
         //Ccambiamos el LookAndFell de la ventana

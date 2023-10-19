@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package cocteles;
+package sprint1;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.UIManager;
@@ -23,7 +23,8 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
     /**
      * Creates new form publicaciones
      */
-     conexion jdbc = new conexion();
+        conexion jdbc = new conexion();
+        
     public editarRegistropublicaciones() {
         initComponents();
          pack();
@@ -177,7 +178,9 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        setVisible(false);
+        VerRegistropublicaciones interfaz = new VerRegistropublicaciones();
+        interfaz.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
 
     /**
