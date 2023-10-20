@@ -5,4 +5,4 @@
 
 ## Descripción
 
-Usando la guia visual de Figma, lograremos recrear una interfaz de usuario sobre los cocteles populares de la ciudad de cochababa, junto a una base de datos en donde se guardaran los cocteles agregados desde la IU hehca en Java
+Usando la guia visual de Figma, lograremos recrear una interfaz de usuario sobre una biblioteca virtual, junto a una base de datos en donde se guardaran los libros.
