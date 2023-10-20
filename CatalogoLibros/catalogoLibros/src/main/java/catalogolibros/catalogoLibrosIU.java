@@ -4,19 +4,43 @@
  */
 package catalogolibros;
 
+import javax.swing.UIManager;
+import database.conexion;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.charset.MalformedInputException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 /**
  *
  * @author Usuario
  */
 public class catalogoLibrosIU extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form catalogoLibrosIU
      */
     public catalogoLibrosIU() {
         initComponents();
     }
-
+    static ArrayList<String> titles;
+    static ArrayList<String> img_urls;
+    static Image[] image;
+    static conexion jdbc;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,39 +64,39 @@ public class catalogoLibrosIU extends javax.swing.JFrame {
         TITLE_6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Biblioteca");
         setBackground(new java.awt.Color(255, 102, 204));
         setForeground(java.awt.Color.darkGray);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
-        IMG_1.setText("jLabel1");
         IMG_1.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        IMG_2.setText("jLabel1");
         IMG_2.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        IMG_3.setText("jLabel2");
         IMG_3.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        IMG_4.setText("jLabel3");
         IMG_4.setPreferredSize(new java.awt.Dimension(100, 100));
 
         IMG_5.setBackground(new java.awt.Color(51, 255, 51));
-        IMG_5.setText("jLabel4");
         IMG_5.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        IMG_6.setText("jLabel5");
         IMG_6.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        TITLE_1.setText("Libro 1");
+        TITLE_1.setText(normalizeTitle(titles.get(0)));
 
-        TITLE_2.setText("Libro 2");
+        TITLE_2.setText(normalizeTitle(titles.get(1)));
 
-        TITLE_3.setText("Libro 3");
+        TITLE_3.setText(normalizeTitle(titles.get(2)));
 
-        TITLE_4.setText("Libro 4");
+        TITLE_4.setText(normalizeTitle(titles.get(3)));
 
-        TITLE_5.setText("Libro 5");
+        TITLE_5.setText(normalizeTitle(titles.get(4)));
 
-        TITLE_6.setText("Libro 6");
+        TITLE_6.setText(normalizeTitle(titles.get(5)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,29 +108,29 @@ public class catalogoLibrosIU extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(IMG_1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TITLE_1))
+                            .addComponent(TITLE_1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(IMG_2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TITLE_2))
+                            .addComponent(TITLE_2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(IMG_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TITLE_3)))
+                            .addComponent(TITLE_3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(IMG_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                                 .addComponent(IMG_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TITLE_4))
+                                .addComponent(TITLE_4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(195, 195, 195)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                    .addComponent(TITLE_5)
+                                    .addComponent(TITLE_5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(IMG_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(101, 101, 101)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(TITLE_6)
-                            .addComponent(IMG_6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(IMG_6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TITLE_6, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
@@ -118,29 +142,45 @@ public class catalogoLibrosIU extends javax.swing.JFrame {
                     .addComponent(IMG_2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IMG_3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TITLE_1)
-                    .addComponent(TITLE_2)
-                    .addComponent(TITLE_3))
-                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TITLE_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TITLE_2, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(TITLE_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IMG_4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IMG_5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IMG_6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TITLE_4)
-                    .addComponent(TITLE_5)
-                    .addComponent(TITLE_6))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TITLE_6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TITLE_4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TITLE_5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(46, 46, 46))
         );
+
+        IMG_1.setIcon(new ImageIcon(image[0]));
+        IMG_2.setIcon(new ImageIcon(image[1]));
+        IMG_3.setIcon(new ImageIcon(image[2]));
+        IMG_4.setIcon(new ImageIcon(image[3]));
+        IMG_5.setIcon(new ImageIcon(image[4]));
+        IMG_6.setIcon(new ImageIcon(image[5]));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        jdbc.desconectar();
+        System.out.println("Base de datos desconectada");
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
+    public String normalizeTitle(String title){
+        return "<html><p>"+title+"</p></html>";
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -164,17 +204,54 @@ public class catalogoLibrosIU extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(catalogoLibrosIU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        try{
+            jdbc = new conexion();
+            Connection myConn = jdbc.conctar();
+            Statement myStmt = myConn.createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from libros");
+            titles = new ArrayList<>();
+            img_urls = new ArrayList<>();
+            
+            while(myRs.next()){
+                String title = myRs.getString("TITLE");
+                String img_url = myRs.getString("IMG_URL");
+                if (!title.isEmpty()){
+                    titles.add(title);
+                    img_urls.add(img_url);
+                }
+            }
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
 
+        try{
+            image = new Image[6];
+            URL url;
+            int i = 0;
+            for (String str : img_urls){
+               url = new URL(str);
+               image[i] = ImageIO.read(url).getScaledInstance(100,120,Image.SCALE_SMOOTH);
+               i++;
+            }
+        }catch(MalformedURLException ex){
+            System.out.println(ex);
+        }catch(IOException ex){
+            System.out.println(ex);
+        }
+       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new catalogoLibrosIU().setVisible(true);
+                
             }
         });
+        
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IMG_1;
+    public javax.swing.JLabel IMG_1;
     private javax.swing.JLabel IMG_2;
     private javax.swing.JLabel IMG_3;
     private javax.swing.JLabel IMG_4;
