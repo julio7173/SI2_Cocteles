@@ -115,6 +115,8 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
         eliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaregistro = new javax.swing.JTable();
+        nuevovalor = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,6 +189,27 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaregistro);
 
+        nuevovalor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevovalorActionPerformed(evt);
+            }
+        });
+        nuevovalor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nuevovalorKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nuevovalorKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nuevovalorKeyTyped(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Ingrese para editar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -199,12 +222,15 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
                 .addGap(119, 119, 119))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(53, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80)
-                        .addComponent(jButton1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(nuevovalor, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(80, 80, 80)
+                            .addComponent(jButton1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -215,8 +241,12 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(13, 13, 13)
+                .addComponent(nuevovalor, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(eliminar))
@@ -243,6 +273,53 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+            // Obtener el nuevo valor editado por el usuario
+    String nuevoValor = nuevovalor.getText();
+    
+    // Verificar si se ha editado algún valor
+    if (nuevoValor.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingresa un nuevo valor antes de editar.");
+        return;
+    }
+    
+    // Obtén la fila seleccionada en la tabla
+    int filaSeleccionada = tablaregistro.getSelectedRow();
+
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Por favor, selecciona un registro para editar.");
+    } else {
+        // Obtiene el valor actual de la celda de la columna "Registro" en la fila seleccionada
+        String registroAEditar = (String) tablaregistro.getValueAt(filaSeleccionada, 0);
+        try {
+            // Crea una sentencia SQL para actualizar el registro en la base de datos
+            String query = "UPDATE registroprof SET registro2 = ? WHERE registro2 = ?";
+
+            // Prepara la declaración
+            PreparedStatement preparedStatement = jdbc.getConctar().prepareStatement(query);
+            preparedStatement.setString(1, nuevoValor);
+            preparedStatement.setString(2, registroAEditar);
+
+            // Ejecuta la sentencia SQL para actualizar el registro
+            int filasAfectadas = preparedStatement.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                // Registro actualizado con éxito
+                JOptionPane.showMessageDialog(this, "Registro actualizado con éxito.");
+                // Actualiza la tabla de registros
+                mostrarRegistros();
+                
+                // Limpiar el campo "nuevovalor" y deshabilitar la edición
+                nuevovalor.setText("");
+                nuevovalor.setEditable(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo actualizar el registro.");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al actualizar el registro: " + e.getMessage());
+        }
+    }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
@@ -289,10 +366,20 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-         editarRegistropublicaciones editarRegistropublicaciones= new editarRegistropublicaciones();
-        editarRegistropublicaciones.setVisible(true);
-        this.dispose();
+          // Verificar si se ha seleccionado una fila en la tabla
+    int filaSeleccionada = tablaregistro.getSelectedRow();
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Por favor, selecciona un registro para editar.");
+    } else {
+        // Obtener el valor actual de la fila seleccionada
+        String valorActual = (String) tablaregistro.getValueAt(filaSeleccionada, 0);
         
+        // Mostrar el valor actual en el campo "nuevovalor"
+        nuevovalor.setText(valorActual);
+        
+        // Habilitar la edición del campo "nuevovalor"
+        nuevovalor.setEditable(true);
+    }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void tablaregistroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tablaregistroKeyTyped
@@ -304,6 +391,23 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
         // TODO add your handling code here:
       
     }//GEN-LAST:event_tablaregistroMouseClicked
+
+    private void nuevovalorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevovalorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevovalorActionPerformed
+
+    private void nuevovalorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nuevovalorKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevovalorKeyPressed
+
+    private void nuevovalorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nuevovalorKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevovalorKeyReleased
+
+    private void nuevovalorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nuevovalorKeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_nuevovalorKeyTyped
 
     /**
      * @param args the command line arguments
@@ -346,8 +450,10 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField nuevovalor;
     private javax.swing.JTable tablaregistro;
     // End of variables declaration//GEN-END:variables
 }
