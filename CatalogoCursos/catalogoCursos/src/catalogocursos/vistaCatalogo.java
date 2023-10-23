@@ -1,6 +1,14 @@
 package catalogocursos;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import database.conexionBDR;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 
 public class vistaCatalogo extends javax.swing.JFrame {
@@ -35,7 +43,6 @@ public class vistaCatalogo extends javax.swing.JFrame {
         indicador5 = new javax.swing.JButton();
         indicador6 = new javax.swing.JButton();
         botonInscribirse = new javax.swing.JButton();
-        nombreInstitucion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(800, 500));
@@ -93,44 +100,74 @@ public class vistaCatalogo extends javax.swing.JFrame {
         tituloCurso1.setBackground(new java.awt.Color(255, 255, 255));
         tituloCurso1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloCurso1.setForeground(new java.awt.Color(255, 255, 255));
-        tituloCurso1.setText("Curso 1");
+        tituloCurso1.setText("<html>Física General<html>");
 
         tituloCurso2.setBackground(new java.awt.Color(255, 255, 255));
         tituloCurso2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloCurso2.setForeground(new java.awt.Color(255, 255, 255));
-        tituloCurso2.setText("Curso 2");
+        tituloCurso2.setText("<html>Introducción <p>a la <p>Programación<html>");
 
         tituloCurso3.setBackground(new java.awt.Color(255, 255, 255));
         tituloCurso3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloCurso3.setForeground(new java.awt.Color(255, 255, 255));
-        tituloCurso3.setText("Curso 3");
+        tituloCurso3.setText("<html>Sistemas de <p>Información II<html>");
 
         tituloCurso4.setBackground(new java.awt.Color(255, 255, 255));
         tituloCurso4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloCurso4.setForeground(new java.awt.Color(255, 255, 255));
-        tituloCurso4.setText("Curso 4");
+        tituloCurso4.setText("<html>Base de Datos <p>II<html>");
 
         tituloCurso5.setBackground(new java.awt.Color(255, 255, 255));
         tituloCurso5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloCurso5.setForeground(new java.awt.Color(255, 255, 255));
-        tituloCurso5.setText("Curso 5");
+        tituloCurso5.setText("<html>Mercadotecnia<html>");
 
         tituloCurso6.setBackground(new java.awt.Color(255, 255, 255));
         tituloCurso6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tituloCurso6.setForeground(new java.awt.Color(255, 255, 255));
-        tituloCurso6.setText("Curso 6");
+        tituloCurso6.setText("<html>Circuitos <p>Electrónicos<html>");
 
         indicador1.setBackground(new java.awt.Color(250, 255, 0));
+        indicador1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador1ActionPerformed(evt);
+            }
+        });
 
         indicador2.setBackground(new java.awt.Color(250, 255, 0));
+        indicador2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador2ActionPerformed(evt);
+            }
+        });
 
         indicador3.setBackground(new java.awt.Color(250, 255, 0));
+        indicador3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador3ActionPerformed(evt);
+            }
+        });
 
         indicador4.setBackground(new java.awt.Color(250, 255, 0));
+        indicador4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador4ActionPerformed(evt);
+            }
+        });
 
         indicador5.setBackground(new java.awt.Color(250, 255, 0));
+        indicador5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador5ActionPerformed(evt);
+            }
+        });
 
         indicador6.setBackground(new java.awt.Color(250, 255, 0));
+        indicador6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador6ActionPerformed(evt);
+            }
+        });
 
         botonInscribirse.setBackground(new java.awt.Color(217, 217, 217));
         botonInscribirse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -142,101 +179,85 @@ public class vistaCatalogo extends javax.swing.JFrame {
             }
         });
 
-        nombreInstitucion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        nombreInstitucion.setForeground(new java.awt.Color(255, 255, 255));
-        nombreInstitucion.setText("Facultad de Ciencias y Tecnologias - U.M.S.S");
-
         javax.swing.GroupLayout baseCatalogoLayout = new javax.swing.GroupLayout(baseCatalogo);
         baseCatalogo.setLayout(baseCatalogoLayout);
         baseCatalogoLayout.setHorizontalGroup(
             baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, baseCatalogoLayout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
-                .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addContainerGap(80, Short.MAX_VALUE)
+                .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonInscribirse)
                     .addGroup(baseCatalogoLayout.createSequentialGroup()
-                        .addComponent(nombreInstitucion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonInscribirse))
-                    .addGroup(baseCatalogoLayout.createSequentialGroup()
-                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonCurso4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(baseCatalogoLayout.createSequentialGroup()
-                                .addComponent(tituloCurso4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(indicador4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tituloCurso4)
+                            .addComponent(indicador4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(76, 76, 76)
-                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonCurso5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(baseCatalogoLayout.createSequentialGroup()
-                                .addComponent(tituloCurso5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(indicador5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tituloCurso5)
+                            .addComponent(indicador5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(77, 77, 77)
-                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(baseCatalogoLayout.createSequentialGroup()
-                                .addComponent(tituloCurso6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(indicador6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(indicador6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tituloCurso6)
                             .addComponent(botonCurso6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(baseCatalogoLayout.createSequentialGroup()
-                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonCurso1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(baseCatalogoLayout.createSequentialGroup()
-                                .addComponent(tituloCurso1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(indicador1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(76, 76, 76)
-                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tituloCurso1)
+                            .addComponent(indicador1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(99, 99, 99)
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonCurso2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(baseCatalogoLayout.createSequentialGroup()
-                                .addComponent(tituloCurso2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(indicador2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tituloCurso2)
+                            .addComponent(indicador2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(77, 77, 77)
-                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, baseCatalogoLayout.createSequentialGroup()
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(indicador3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(tituloCurso3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(indicador3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(botonCurso3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(botonCurso3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(94, 94, 94))
         );
         baseCatalogoLayout.setVerticalGroup(
             baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(baseCatalogoLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonInscribirse)
-                    .addComponent(nombreInstitucion))
+                .addComponent(botonInscribirse)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonCurso1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonCurso2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonCurso3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tituloCurso1)
-                        .addComponent(tituloCurso2)
-                        .addComponent(tituloCurso3))
-                    .addComponent(indicador1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(indicador2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(indicador3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74)
-                .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonCurso4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCurso5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCurso6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloCurso1)
+                    .addComponent(tituloCurso2)
+                    .addComponent(tituloCurso3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tituloCurso4)
-                        .addComponent(tituloCurso5)
-                        .addComponent(tituloCurso6))
+                .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(baseCatalogoLayout.createSequentialGroup()
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(indicador1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(indicador3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(botonCurso4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonCurso5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonCurso6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tituloCurso4)
+                            .addComponent(tituloCurso5)
+                            .addComponent(tituloCurso6)))
+                    .addComponent(indicador2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(indicador4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(indicador5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(indicador6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -295,6 +316,173 @@ public class vistaCatalogo extends javax.swing.JFrame {
         formulario.setVisible(true);
     }//GEN-LAST:event_botonInscribirseActionPerformed
 
+    private void indicador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador1ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC1 = "SELECT estado FROM cursos WHERE nombreCurso = 'Física General'";
+        PreparedStatement cur1;
+        try{
+            cur1 = jdbc.prepareStatement(consulC1);
+            ResultSet rs = cur1.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador1.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador1ActionPerformed
+
+    private void indicador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador2ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC2 = "SELECT estado FROM cursos WHERE nombreCurso = 'Introducción a la Programación'";
+        PreparedStatement cur2;
+        try{
+            cur2 = jdbc.prepareStatement(consulC2);
+            ResultSet rs = cur2.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador2.doClick();
+                indicador2.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador2ActionPerformed
+
+    private void indicador3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador3ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC3 = "SELECT estado FROM cursos WHERE nombreCurso = 'Sistemas de Información II'";
+        PreparedStatement cur3;
+        try{
+            cur3 = jdbc.prepareStatement(consulC3);
+            ResultSet rs = cur3.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador3.doClick();
+                indicador3.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador3ActionPerformed
+
+    private void indicador4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador4ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC4 = "SELECT estado FROM cursos WHERE nombreCurso = 'Base de Datos II'";
+        PreparedStatement cur4;
+        try{
+            cur4 = jdbc.prepareStatement(consulC4);
+            ResultSet rs = cur4.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador4.doClick();
+                indicador4.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador4ActionPerformed
+
+    private void indicador5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador5ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC5 = "SELECT estado FROM cursos WHERE nombreCurso = 'Mercadotecnia'";
+        PreparedStatement cur5;
+        try{
+            cur5 = jdbc.prepareStatement(consulC5);
+            ResultSet rs = cur5.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador5.doClick();
+                indicador5.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador5ActionPerformed
+
+    private void indicador6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador6ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC6 = "SELECT estado FROM cursos WHERE nombreCurso = 'Circuitos Electrónicos'";
+        PreparedStatement cur6;
+        try{
+            cur6 = jdbc.prepareStatement(consulC6);
+            ResultSet rs = cur6.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador6.doClick();
+                indicador6.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador6ActionPerformed
+
     public static void main(String args[]) {
         //Ccambiamos el LookAndFell de la ventana
         try {
@@ -326,7 +514,6 @@ public class vistaCatalogo extends javax.swing.JFrame {
     private javax.swing.JButton indicador4;
     private javax.swing.JButton indicador5;
     private javax.swing.JButton indicador6;
-    private javax.swing.JLabel nombreInstitucion;
     private javax.swing.JLabel tituloCurso1;
     private javax.swing.JLabel tituloCurso2;
     private javax.swing.JLabel tituloCurso3;

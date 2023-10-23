@@ -47,67 +47,47 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="103" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="nombreInstitucion" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="botonInscribirse" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace pref="80" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="botonInscribirse" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="botonCurso4" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="tituloCurso4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="indicador4" min="-2" pref="50" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="tituloCurso4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="indicador4" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="botonCurso5" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="tituloCurso5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="indicador5" min="-2" pref="50" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="tituloCurso5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="indicador5" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="tituloCurso6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="indicador6" min="-2" pref="50" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="indicador6" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="tituloCurso6" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="botonCurso6" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="botonCurso1" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="tituloCurso1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="indicador1" min="-2" pref="50" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="tituloCurso1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="indicador1" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="botonCurso2" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="tituloCurso2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="indicador2" min="-2" pref="50" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="tituloCurso2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="indicador2" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="tituloCurso3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="indicador3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="indicador3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="tituloCurso3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="botonCurso3" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="botonCurso3" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -119,10 +99,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="botonInscribirse" min="-2" max="-2" attributes="0"/>
-                      <Component id="nombreInstitucion" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="botonInscribirse" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="46" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="botonCurso1" min="-2" pref="100" max="-2" attributes="0"/>
@@ -130,34 +107,40 @@
                       <Component id="botonCurso3" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="tituloCurso1" min="-2" max="-2" attributes="0"/>
-                          <Component id="tituloCurso2" min="-2" max="-2" attributes="0"/>
-                          <Component id="tituloCurso3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="indicador1" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="indicador2" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="indicador3" min="-2" pref="20" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="botonCurso4" min="-2" pref="100" max="-2" attributes="0"/>
-                      <Component id="botonCurso5" min="-2" pref="100" max="-2" attributes="0"/>
-                      <Component id="botonCurso6" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="tituloCurso1" min="-2" max="-2" attributes="0"/>
+                      <Component id="tituloCurso2" min="-2" max="-2" attributes="0"/>
+                      <Component id="tituloCurso3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="tituloCurso4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tituloCurso5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tituloCurso6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="indicador1" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="indicador3" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="botonCurso4" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="botonCurso5" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="botonCurso6" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="tituloCurso4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tituloCurso5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tituloCurso6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
+                      <Component id="indicador2" min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="indicador4" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="indicador5" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="indicador6" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -252,7 +235,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Curso 1"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;F&#xed;sica General&lt;html&gt;&quot;" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="tituloCurso2">
@@ -266,7 +251,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Curso 2"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;Introducci&#xf3;n &lt;p&gt;a la &lt;p&gt;Programaci&#xf3;n&lt;html&gt;&quot;" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="tituloCurso3">
@@ -280,7 +267,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Curso 3"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;Sistemas de &lt;p&gt;Informaci&#xf3;n II&lt;html&gt;&quot;" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="tituloCurso4">
@@ -294,7 +283,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Curso 4"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;Base de Datos &lt;p&gt;II&lt;html&gt;&quot;" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="tituloCurso5">
@@ -308,7 +299,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Curso 5"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;Mercadotecnia&lt;html&gt;&quot;" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="tituloCurso6">
@@ -322,7 +315,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Curso 6"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;Circuitos &lt;p&gt;Electr&#xf3;nicos&lt;html&gt;&quot;" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="indicador1">
@@ -331,6 +326,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="indicador2">
           <Properties>
@@ -338,6 +336,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="indicador3">
           <Properties>
@@ -345,6 +346,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="indicador4">
           <Properties>
@@ -352,6 +356,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="indicador5">
           <Properties>
@@ -359,6 +366,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador5ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="indicador6">
           <Properties>
@@ -366,6 +376,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador6ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonInscribirse">
           <Properties>
@@ -383,17 +396,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonInscribirseActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="nombreInstitucion">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Facultad de Ciencias y Tecnologias - U.M.S.S"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
