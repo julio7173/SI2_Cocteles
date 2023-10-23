@@ -326,6 +326,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="indicador2">
           <Properties>
@@ -333,6 +336,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="indicador3">
           <Properties>
@@ -340,6 +346,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="indicador4">
           <Properties>
@@ -347,6 +356,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="indicador5">
           <Properties>
@@ -354,6 +366,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador5ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="indicador6">
           <Properties>
@@ -361,6 +376,9 @@
               <Color blue="0" green="ff" red="fa" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="indicador6ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonInscribirse">
           <Properties>

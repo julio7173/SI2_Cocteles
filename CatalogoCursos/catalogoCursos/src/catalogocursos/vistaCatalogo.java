@@ -1,6 +1,14 @@
 package catalogocursos;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import database.conexionBDR;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 
 public class vistaCatalogo extends javax.swing.JFrame {
@@ -120,16 +128,46 @@ public class vistaCatalogo extends javax.swing.JFrame {
         tituloCurso6.setText("<html>Circuitos <p>Electrónicos<html>");
 
         indicador1.setBackground(new java.awt.Color(250, 255, 0));
+        indicador1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador1ActionPerformed(evt);
+            }
+        });
 
         indicador2.setBackground(new java.awt.Color(250, 255, 0));
+        indicador2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador2ActionPerformed(evt);
+            }
+        });
 
         indicador3.setBackground(new java.awt.Color(250, 255, 0));
+        indicador3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador3ActionPerformed(evt);
+            }
+        });
 
         indicador4.setBackground(new java.awt.Color(250, 255, 0));
+        indicador4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador4ActionPerformed(evt);
+            }
+        });
 
         indicador5.setBackground(new java.awt.Color(250, 255, 0));
+        indicador5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador5ActionPerformed(evt);
+            }
+        });
 
         indicador6.setBackground(new java.awt.Color(250, 255, 0));
+        indicador6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                indicador6ActionPerformed(evt);
+            }
+        });
 
         botonInscribirse.setBackground(new java.awt.Color(217, 217, 217));
         botonInscribirse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -277,6 +315,173 @@ public class vistaCatalogo extends javax.swing.JFrame {
         formularioInscripcion formulario = new formularioInscripcion();
         formulario.setVisible(true);
     }//GEN-LAST:event_botonInscribirseActionPerformed
+
+    private void indicador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador1ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC1 = "SELECT estado FROM cursos WHERE nombreCurso = 'Física General'";
+        PreparedStatement cur1;
+        try{
+            cur1 = jdbc.prepareStatement(consulC1);
+            ResultSet rs = cur1.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador1.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador1ActionPerformed
+
+    private void indicador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador2ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC2 = "SELECT estado FROM cursos WHERE nombreCurso = 'Introducción a la Programación'";
+        PreparedStatement cur2;
+        try{
+            cur2 = jdbc.prepareStatement(consulC2);
+            ResultSet rs = cur2.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador2.doClick();
+                indicador2.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador2ActionPerformed
+
+    private void indicador3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador3ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC3 = "SELECT estado FROM cursos WHERE nombreCurso = 'Sistemas de Información II'";
+        PreparedStatement cur3;
+        try{
+            cur3 = jdbc.prepareStatement(consulC3);
+            ResultSet rs = cur3.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador3.doClick();
+                indicador3.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador3ActionPerformed
+
+    private void indicador4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador4ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC4 = "SELECT estado FROM cursos WHERE nombreCurso = 'Base de Datos II'";
+        PreparedStatement cur4;
+        try{
+            cur4 = jdbc.prepareStatement(consulC4);
+            ResultSet rs = cur4.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador4.doClick();
+                indicador4.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador4ActionPerformed
+
+    private void indicador5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador5ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC5 = "SELECT estado FROM cursos WHERE nombreCurso = 'Mercadotecnia'";
+        PreparedStatement cur5;
+        try{
+            cur5 = jdbc.prepareStatement(consulC5);
+            ResultSet rs = cur5.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador5.doClick();
+                indicador5.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador5ActionPerformed
+
+    private void indicador6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador6ActionPerformed
+        // Objeto de la calse conexion para manejar la conexion con la base de datos
+        conexionBDR con = new conexionBDR();
+        // Llama al metodo conectar para obtener la conexion
+        Connection jdbc = con.conctar();
+        // Variables con la sentencia SQL - Insertar datos
+        String consulC6 = "SELECT estado FROM cursos WHERE nombreCurso = 'Circuitos Electrónicos'";
+        PreparedStatement cur6;
+        try{
+            cur6 = jdbc.prepareStatement(consulC6);
+            ResultSet rs = cur6.executeQuery();
+            boolean estado = false;
+            if(rs.next()){
+                estado = rs.getBoolean(1);
+            }
+            
+            if(estado){
+                indicador6.doClick();
+                indicador6.setBackground(new Color(255,0,0));
+            }
+        }catch (SQLException ex) {
+            // Captura alguna excepcion al ejecutar y la muestra por consola
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // Llama al método desconectar - Cierra la conexión con la base de datos
+        con.desconectar();
+    }//GEN-LAST:event_indicador6ActionPerformed
 
     public static void main(String args[]) {
         //Ccambiamos el LookAndFell de la ventana

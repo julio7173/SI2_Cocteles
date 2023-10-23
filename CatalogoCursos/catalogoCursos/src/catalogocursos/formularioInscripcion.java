@@ -2,6 +2,8 @@ package catalogocursos;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import database.conexionBDR;
+import java.awt.event.ActionEvent;
+import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
@@ -239,7 +241,6 @@ public class formularioInscripcion extends javax.swing.JFrame {
         String ci = campoCI.getText().trim();
         String correo = campoCorreo.getText().trim();
         String curso = campoCursos.getSelectedItem().toString().trim();
-        int cupoMaximo = 25;
         
         // Verifica que todos los campos esten llenos
         if(nombre.isEmpty() || ci.isEmpty() || correo.isEmpty() || curso.isEmpty()){
@@ -290,7 +291,7 @@ public class formularioInscripcion extends javax.swing.JFrame {
                 int inscrito = 0;
                 
                 if(rs.next()){
-                    cupoActual = rs.getInt(1);
+                    cupoActual = rs.getInt("cupoActual");
                 }
                 if(rs2.next()){
                     existe = rs2.getInt(1);
@@ -369,6 +370,29 @@ public class formularioInscripcion extends javax.swing.JFrame {
                         }
                     }
                 }else{
+                    switch(curso){
+                        case "Física General":
+                            indicador1.doClick();
+                            break;
+                        case "Introducción a la Programación":
+                            indicador2.doClick();
+                            break;
+                        case "Sistemas de Información II":
+                            indicador3.doClick();
+                            break;
+                        case "Base de Datos II":
+                            indicador4.doClick();
+                            break;
+                        case "Mercadotecnia":
+                            indicador5.doClick();
+                            break;
+                        case "Circuitos Electrónicos":
+                            indicador6.doClick();
+                            break;
+                        default:
+                            System.out.println("No existen mas cursos");
+                            break;
+                    }
                     JOptionPane.showMessageDialog(this, "No hay cupos disponibles para el curso " + curso, "Error",JOptionPane.ERROR_MESSAGE);
                 }
             } catch (SQLException ex) {
