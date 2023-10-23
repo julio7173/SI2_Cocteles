@@ -246,41 +246,38 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        // TODO add your handling code here:
-    /**                                           
-    DefaultTableModel model = (DefaultTableModel) tablaregistro.getModel();
-    int selectedRow = tablaregistro.getSelectedRow();
+    // Obtén la fila seleccionada en la tabla
+    int filaSeleccionada = tablaregistro.getSelectedRow();
 
-    if (selectedRow != -1) {
-        String registro = (String) model.getValueAt(selectedRow, 0);
-
-        // Construct the SQL query to delete the record based on "registro"
-        String deleteQuery = "DELETE FROM registroprof WHERE registro2 ='"+registro+"'";
-
-        
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Por favor, selecciona un registro para eliminar.");
+    } else {
+        // Obtiene el valor de la celda de la columna "Registro" en la fila seleccionada
+        String registroAEliminar = (String) tablaregistro.getValueAt(filaSeleccionada, 0);
 
         try {
-        
-            this.jdbc.consultarBD(deleteQuery);
+            // Crea una sentencia SQL para eliminar el registro en la base de datos
+            String query = "DELETE FROM registroprof WHERE registro2 = ?";
 
-            int rowsDeleted =1;
-            if (rowsDeleted > 0) {
-                // Data was successfully deleted from the database
-                model.removeRow(selectedRow); // Remove the row from the JTable
+            // Prepara la declaración
+            PreparedStatement preparedStatement = jdbc.getConctar().prepareStatement(query);
+            preparedStatement.setString(1, registroAEliminar);
+
+            // Ejecuta la sentencia SQL para eliminar el registro
+            int filasAfectadas = preparedStatement.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                // Registro eliminado con éxito
+                JOptionPane.showMessageDialog(this, "Registro eliminado con éxito.");
+                // Actualiza la tabla de registros
+                mostrarRegistros();
             } else {
-                JOptionPane.showMessageDialog(this, "Record not found or couldn't be deleted.");
+                JOptionPane.showMessageDialog(this, "No se pudo eliminar el registro.");
             }
-
-        } catch (SQLException ex) {
-            // Handle any SQL exceptions here
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error deleting record: " + ex.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(VerRegistropublicaciones.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + e.getMessage());
         }
-    } else {
-        JOptionPane.showMessageDialog(this, "Please select a row to delete.");
-    }*/
+    }
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked

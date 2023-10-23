@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import com.mysql.cj.jdbc.JdbcStatement;
 
 
 public class conexion {
@@ -56,5 +57,8 @@ public class conexion {
         } catch (Exception e) {
             throw new Exception("Error al consultar la BD");
         }
+    }
+    public Connection getConctar() {
+        return jdbc;
     }
 }

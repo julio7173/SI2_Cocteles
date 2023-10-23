@@ -168,6 +168,22 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+          String nuevoValor = camporegistro.getText();
+
+    // Realizar la lógica de guardado en la base de datos
+    try {
+        Connection conn = jdbc.getConctar(); // Obtener una conexión a la base de datos
+        String sql = "UPDATE tabla SET columna = ? WHERE id = ?"; // Consulta SQL de actualización
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, nuevoValor); // Establecer el nuevo valor en la consulta
+        stmt.executeUpdate(); // Ejecutar la consulta
+        conn.close(); // Cerrar la conexión
+
+        JOptionPane.showMessageDialog(this, "Datos guardados con éxito.");
+    } catch (SQLException ex) {
+        Logger.getLogger(editarRegistropublicaciones.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(this, "Error al guardar los datos.");
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
