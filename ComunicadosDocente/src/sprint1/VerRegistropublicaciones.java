@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
 import java.sql.PreparedStatement;
-
+import com.mysql.cj.jdbc.JdbcStatement;
 
 
 
@@ -35,8 +35,7 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
      * Creates new form publicaciones
      */
      conexion jdbc = new conexion();
-     
-     
+    
   
     
     public VerRegistropublicaciones() {
@@ -45,9 +44,11 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         jdbc.conctar();
         mostrarRegistros();
+        
        // mostrar();    
         
     }
+    
   
     
     /**
@@ -63,15 +64,7 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
             evt.consume();
         }
     }
-     /**
-      a.add(registro);
-                     Object[] objec;
-            for (int i = 0; i < a.size(); i++) {
-                System.out.println(a.get(i));
-                   objec = a.toArray();
-                 modelo.addRow(objec);
-            }
-      */
+     
     public void mostrarRegistros(){
         //String [] registroProf = new String[1];
         
@@ -111,7 +104,7 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        editar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaregistro = new javax.swing.JTable();
@@ -137,16 +130,16 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton2.setText("Editar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        editar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        editar.setText("Editar");
+        editar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                editarMouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                editarActionPerformed(evt);
             }
         });
 
@@ -192,9 +185,9 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(editar)
+                .addGap(66, 66, 66)
                 .addComponent(eliminar)
                 .addGap(119, 119, 119))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -218,7 +211,7 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(editar)
                     .addComponent(eliminar))
                 .addGap(36, 36, 36))
         );
@@ -241,46 +234,53 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+          int filaSeleccionada = tablaregistro.getSelectedRow();
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Por favor, selecciona un registro para editar.");
+    } else {
+        String registroAEditar = (String) tablaregistro.getValueAt(filaSeleccionada, 0);
+        editarRegistropublicaciones editarRegistropublicaciones = new editarRegistropublicaciones( registroAEditar);
+        editarRegistropublicaciones.setVisible(true);
+    }
+    
+    }//GEN-LAST:event_editarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        // TODO add your handling code here:
-    /**                                           
-    DefaultTableModel model = (DefaultTableModel) tablaregistro.getModel();
-    int selectedRow = tablaregistro.getSelectedRow();
+        // Obtén la fila seleccionada en la tabla
+    int filaSeleccionada = tablaregistro.getSelectedRow();
+    
 
-    if (selectedRow != -1) {
-        String registro = (String) model.getValueAt(selectedRow, 0);
-
-        // Construct the SQL query to delete the record based on "registro"
-        String deleteQuery = "DELETE FROM registroprof WHERE registro2 ='"+registro+"'";
-
-        
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Por favor, selecciona un registro para eliminar.");
+    } else {
+        // Obtiene el valor de la celda de la columna "Registro" en la fila seleccionada
+        String registroAEliminar = (String) tablaregistro.getValueAt(filaSeleccionada, 0);
 
         try {
-        
-            this.jdbc.consultarBD(deleteQuery);
+            // Crea una sentencia SQL para eliminar el registro en la base de datos
+            String query = "DELETE FROM registroprof WHERE registro2 = ?";
 
-            int rowsDeleted =1;
-            if (rowsDeleted > 0) {
-                // Data was successfully deleted from the database
-                model.removeRow(selectedRow); // Remove the row from the JTable
+            // Prepara la declaración
+            PreparedStatement preparedStatement = jdbc.getConctar().prepareStatement(query);
+            preparedStatement.setString(1, registroAEliminar);
+
+            // Ejecuta la sentencia SQL para eliminar el registro
+            int filasAfectadas = preparedStatement.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                // Registro eliminado con éxito
+                JOptionPane.showMessageDialog(this, "Registro eliminado con éxito.");
+                // Actualiza la tabla de registros
+                mostrarRegistros();
             } else {
-                JOptionPane.showMessageDialog(this, "Record not found or couldn't be deleted.");
+                JOptionPane.showMessageDialog(this, "No se pudo eliminar el registro.");
             }
-
-        } catch (SQLException ex) {
-            // Handle any SQL exceptions here
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error deleting record: " + ex.getMessage());
-        } catch (Exception ex) {
-            Logger.getLogger(VerRegistropublicaciones.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar el registro: " + e.getMessage());
         }
-    } else {
-        JOptionPane.showMessageDialog(this, "Please select a row to delete.");
-    }*/
+    }
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -290,13 +290,17 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
         interfaz.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void editarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarMouseClicked
         // TODO add your handling code here:
-         editarRegistropublicaciones editarRegistropublicaciones= new editarRegistropublicaciones();
+         int filaSeleccionada = tablaregistro.getSelectedRow();
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Por favor, selecciona un registro para editar.");
+    } else {
+        String registroAEditar = (String) tablaregistro.getValueAt(filaSeleccionada, 0);
+        editarRegistropublicaciones editarRegistropublicaciones = new editarRegistropublicaciones( registroAEditar);
         editarRegistropublicaciones.setVisible(true);
-        this.dispose();
-        
-    }//GEN-LAST:event_jButton2MouseClicked
+    }
+    }//GEN-LAST:event_editarMouseClicked
 
     private void tablaregistroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tablaregistroKeyTyped
         // TODO add your handling code here:
@@ -345,12 +349,13 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton editar;
     private javax.swing.JButton eliminar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaregistro;
     // End of variables declaration//GEN-END:variables
 }
+

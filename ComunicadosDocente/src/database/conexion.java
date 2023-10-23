@@ -57,4 +57,7 @@ public class conexion {
             throw new Exception("Error al consultar la BD");
         }
     }
+    public Connection getConctar() {
+        return jdbc;
+    }
 }

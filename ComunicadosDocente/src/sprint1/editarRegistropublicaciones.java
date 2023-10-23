@@ -9,11 +9,14 @@ import javax.swing.UIManager;
 import database.conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import sprint1.VerRegistropublicaciones;
 /**
  *
  * @author canta
@@ -22,15 +25,23 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
 
     /**
      * Creates new form publicaciones
-     */
+     */ private String valorOriginalDelRegistro;
         conexion jdbc = new conexion();
+
         
-    public editarRegistropublicaciones() {
+   public editarRegistropublicaciones(String registroAEditar) {
         initComponents();
-         pack();
-        setLocationRelativeTo(null);
+         
+        valorOriginalDelRegistro = registroAEditar; // Almacena el valor original del registro
+        // Resto del código de inicialización del formulario de edición
+         tablaregistro.setText(registroAEditar);
+         setLocationRelativeTo(null);
     }
+ private String registroAEditar;
+
+  
  
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,9 +55,9 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        camporegistro = new javax.swing.JTextField();
+        tablaregistro = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,11 +80,11 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        guardar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                guardarActionPerformed(evt);
             }
         });
 
@@ -90,20 +101,20 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
             }
         });
 
-        camporegistro.addActionListener(new java.awt.event.ActionListener() {
+        tablaregistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                camporegistroActionPerformed(evt);
+                tablaregistroActionPerformed(evt);
             }
         });
-        camporegistro.addKeyListener(new java.awt.event.KeyAdapter() {
+        tablaregistro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                camporegistroKeyPressed(evt);
+                tablaregistroKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                camporegistroKeyReleased(evt);
+                tablaregistroKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                camporegistroKeyTyped(evt);
+                tablaregistroKeyTyped(evt);
             }
         });
 
@@ -113,7 +124,7 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(124, 124, 124)
-                .addComponent(jButton2)
+                .addComponent(guardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(119, 119, 119))
@@ -126,7 +137,7 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(50, 50, 50)
-                    .addComponent(camporegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tablaregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(50, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -138,13 +149,13 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 346, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(guardar)
                     .addComponent(jButton3))
                 .addGap(36, 36, 36))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(105, 105, 105)
-                    .addComponent(camporegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tablaregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(105, Short.MAX_VALUE)))
         );
 
@@ -166,9 +177,30 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+       String nuevoContenido = tablaregistro.getText();
+
+    // Actualiza el registro en la base de datos usando una sentencia SQL UPDATE
+    String query = "UPDATE registroprof SET registro2 = ? WHERE registro2 = ?";
+    try {
+        Connection connection = jdbc.getConctar();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, nuevoContenido);
+        preparedStatement.setString(2, valorOriginalDelRegistro); // Usa la variable de instancia
+        int filasAfectadas = preparedStatement.executeUpdate();
+        if (filasAfectadas > 0) {
+            // Registro actualizado con éxito
+            JOptionPane.showMessageDialog(this, "Registro actualizado con éxito.");
+            this.dispose(); // Cierra la ventana de edición
+       } else {
+            JOptionPane.showMessageDialog(this, "No se pudo actualizar el registro.");
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error al actualizar el registro: " + e.getMessage());
+    }
+
+
+    }//GEN-LAST:event_guardarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -186,23 +218,23 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
         interfaz.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
 
-    private void camporegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camporegistroActionPerformed
+    private void tablaregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tablaregistroActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_camporegistroActionPerformed
+    }//GEN-LAST:event_tablaregistroActionPerformed
 
-    private void camporegistroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_camporegistroKeyPressed
+    private void tablaregistroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tablaregistroKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_camporegistroKeyPressed
+    }//GEN-LAST:event_tablaregistroKeyPressed
 
-    private void camporegistroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_camporegistroKeyReleased
+    private void tablaregistroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tablaregistroKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_camporegistroKeyReleased
+    }//GEN-LAST:event_tablaregistroKeyReleased
 
-    private void camporegistroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_camporegistroKeyTyped
+    private void tablaregistroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tablaregistroKeyTyped
         // TODO add your handling code here:
      
-    }//GEN-LAST:event_camporegistroKeyTyped
+    }//GEN-LAST:event_tablaregistroKeyTyped
 
     /**
      * @param args the command line arguments
@@ -237,17 +269,17 @@ public class editarRegistropublicaciones extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new editarRegistropublicaciones().setVisible(true);
+                new VerRegistropublicaciones().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField camporegistro;
+    private javax.swing.JButton guardar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField tablaregistro;
     // End of variables declaration//GEN-END:variables
 }
