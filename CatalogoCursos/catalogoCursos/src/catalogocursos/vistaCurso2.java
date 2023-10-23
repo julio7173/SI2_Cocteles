@@ -67,7 +67,7 @@ public class vistaCurso2 extends javax.swing.JFrame {
         titulo.setBackground(new java.awt.Color(48, 48, 48));
         titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setText("Curso 2");
+        titulo.setText("<html>Introducción a la Programación<html>");
 
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCursos/2.png"))); // NOI18N
         banner.setText("jLabel1");
@@ -76,7 +76,8 @@ public class vistaCurso2 extends javax.swing.JFrame {
         descripcion.setForeground(new java.awt.Color(255, 255, 255));
         descripcion.setText("DESCRIPCIÓN");
 
-        contenidoDescripcion.setText("<html>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<html>");
+        contenidoDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        contenidoDescripcion.setText("<html>Desarrolla habilidades de<p>pensamiento algoritmico,<p>aprende a comunicarte con <p>las computadoras y crea<p>programas para resolver<p>problemas.<html>");
 
         divisionUno.setBackground(new java.awt.Color(250, 255, 0));
         divisionUno.setForeground(new java.awt.Color(250, 255, 0));
@@ -98,7 +99,8 @@ public class vistaCurso2 extends javax.swing.JFrame {
         requisitos.setForeground(new java.awt.Color(255, 255, 255));
         requisitos.setText("REQUISITOS");
 
-        contenidoRequisitos.setText("<html>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<html>");
+        contenidoRequisitos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        contenidoRequisitos.setText("<html>* NO cursar más de 4 cursos<p>* Tener un correo valido<p>* Una laptop<html>");
 
         divisionDos.setBackground(new java.awt.Color(250, 255, 0));
         divisionDos.setForeground(new java.awt.Color(250, 255, 0));
@@ -119,7 +121,8 @@ public class vistaCurso2 extends javax.swing.JFrame {
         duracion.setForeground(new java.awt.Color(255, 255, 255));
         duracion.setText("DURACIÓN");
 
-        cotenidoDuracion.setText("<html>aaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaa<html>");
+        cotenidoDuracion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cotenidoDuracion.setText("<html>* 4 meses<html>");
 
         javax.swing.GroupLayout baseCatalogoLayout = new javax.swing.GroupLayout(baseCatalogo);
         baseCatalogo.setLayout(baseCatalogoLayout);
@@ -151,7 +154,7 @@ public class vistaCurso2 extends javax.swing.JFrame {
                         .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(baseCatalogoLayout.createSequentialGroup()
                                 .addComponent(botonAtras)
-                                .addGap(274, 274, 274)
+                                .addGap(180, 180, 180)
                                 .addComponent(titulo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botonInscrito2))
@@ -209,7 +212,7 @@ public class vistaCurso2 extends javax.swing.JFrame {
 
     private void botonInscrito2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInscrito2ActionPerformed
         this.dispose();
-        formularioInscripcion formulario = new formularioInscripcion();
+        formularioInscrito formulario = new formularioInscrito();
         formulario.setVisible(true);
     }//GEN-LAST:event_botonInscrito2ActionPerformed
 

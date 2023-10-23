@@ -105,7 +105,7 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="botonAtras" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
                                   <Component id="titulo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="botonInscrito2" min="-2" max="-2" attributes="0"/>
@@ -200,7 +200,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Curso 2"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;&lt;html&gt;Introducci&#xf3;n a la Programaci&#xf3;n&lt;html&gt;&quot;" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="banner">
@@ -224,8 +226,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="contenidoDescripcion">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&lt;html&gt;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&lt;p&gt;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&lt;p&gt;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&lt;p&gt;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&lt;html&gt;&quot;" type="code"/>
+              <Connection code="&quot;&lt;html&gt;Desarrolla habilidades de&lt;p&gt;pensamiento algoritmico,&lt;p&gt;aprende a comunicarte con &lt;p&gt;las computadoras y crea&lt;p&gt;programas para resolver&lt;p&gt;problemas.&lt;html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -269,8 +274,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="contenidoRequisitos">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&lt;html&gt;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&lt;p&gt;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&lt;p&gt;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&lt;p&gt;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&lt;html&gt;&quot;" type="code"/>
+              <Connection code="&quot;&lt;html&gt;* NO cursar m&#xe1;s de 4 cursos&lt;p&gt;* Tener un correo valido&lt;p&gt;* Una laptop&lt;html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -313,8 +321,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="cotenidoDuracion">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="&quot;&lt;html&gt;aaaaaaaaaaaaaaa&lt;p&gt;aaaaaaaaaaaaaaa&lt;p&gt;aaaaaaaaaaaaaaa&lt;p&gt;aaaaaaaaaaaaaaa&lt;html&gt;&quot;" type="code"/>
+              <Connection code="&quot;&lt;html&gt;* 4 meses&lt;html&gt;&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>

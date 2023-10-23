@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class conexion {
     // Atributos para la conexion con la base de datos
-    //String url = "jdbc:mysql://localhost:3306/"; // Direccion de la base de datos
-    String url = "jdbc:mysql://1322-200-87-92-56.ngrok-free.app:80/";
+    String url = "jdbc:mysql://localhost:3306/"; // Direccion de la base de datos
+    //String url = "jdbc:mysql://1671-200-87-92-27.ngrok-free.app:80/";
     String db = "cocteles"; // NOmbre de la base de datos
     String user = "root"; // Nombre de usuario
     String password = ""; // Contraseña de usuario

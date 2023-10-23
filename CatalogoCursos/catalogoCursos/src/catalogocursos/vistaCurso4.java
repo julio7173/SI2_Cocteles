@@ -67,7 +67,7 @@ public class vistaCurso4 extends javax.swing.JFrame {
         titulo.setBackground(new java.awt.Color(48, 48, 48));
         titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setText("Curso 4");
+        titulo.setText("<html>Base de Datos II<html>");
 
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCursos/4.png"))); // NOI18N
         banner.setText("jLabel1");
@@ -76,7 +76,8 @@ public class vistaCurso4 extends javax.swing.JFrame {
         descripcion.setForeground(new java.awt.Color(255, 255, 255));
         descripcion.setText("DESCRIPCIÓN");
 
-        contenidoDescripcion.setText("<html>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<html>");
+        contenidoDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        contenidoDescripcion.setText("<html>Optimización de consultas,<p>usando modelos relacionales,<p>obetos-relacional u otros.<html>");
 
         divisionUno.setBackground(new java.awt.Color(250, 255, 0));
         divisionUno.setForeground(new java.awt.Color(250, 255, 0));
@@ -98,7 +99,8 @@ public class vistaCurso4 extends javax.swing.JFrame {
         requisitos.setForeground(new java.awt.Color(255, 255, 255));
         requisitos.setText("REQUISITOS");
 
-        contenidoRequisitos.setText("<html>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<html>");
+        contenidoRequisitos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        contenidoRequisitos.setText("<html>* NO cursar más de 4 cursos<p>* Tener un correo valido<p>* Haber cursado BD-I<html>");
 
         divisionDos.setBackground(new java.awt.Color(250, 255, 0));
         divisionDos.setForeground(new java.awt.Color(250, 255, 0));
@@ -119,7 +121,8 @@ public class vistaCurso4 extends javax.swing.JFrame {
         duracion.setForeground(new java.awt.Color(255, 255, 255));
         duracion.setText("DURACIÓN");
 
-        cotenidoDuracion.setText("<html>aaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaa<html>");
+        cotenidoDuracion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cotenidoDuracion.setText("<html>* 4 meses<html>");
 
         javax.swing.GroupLayout baseCatalogoLayout = new javax.swing.GroupLayout(baseCatalogo);
         baseCatalogo.setLayout(baseCatalogoLayout);
@@ -128,16 +131,6 @@ public class vistaCurso4 extends javax.swing.JFrame {
             .addGroup(baseCatalogoLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(baseCatalogoLayout.createSequentialGroup()
-                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(baseCatalogoLayout.createSequentialGroup()
-                                .addComponent(botonAtras)
-                                .addGap(274, 274, 274)
-                                .addComponent(titulo)
-                                .addGap(170, 170, 170)
-                                .addComponent(botonInscrito4))
-                            .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(50, Short.MAX_VALUE))
                     .addGroup(baseCatalogoLayout.createSequentialGroup()
                         .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(baseCatalogoLayout.createSequentialGroup()
@@ -156,7 +149,17 @@ public class vistaCurso4 extends javax.swing.JFrame {
                         .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(duracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cotenidoDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(81, 81, 81))))
+                        .addGap(81, 81, 81))
+                    .addGroup(baseCatalogoLayout.createSequentialGroup()
+                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(baseCatalogoLayout.createSequentialGroup()
+                                .addComponent(botonAtras)
+                                .addGap(193, 193, 193)
+                                .addComponent(titulo)
+                                .addGap(202, 202, 202)
+                                .addComponent(botonInscrito4))
+                            .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 50, Short.MAX_VALUE))))
         );
         baseCatalogoLayout.setVerticalGroup(
             baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +212,7 @@ public class vistaCurso4 extends javax.swing.JFrame {
 
     private void botonInscrito4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInscrito4ActionPerformed
         this.dispose();
-        formularioInscripcion formulario = new formularioInscripcion();
+        formularioInscrito formulario = new formularioInscrito();
         formulario.setVisible(true);
     }//GEN-LAST:event_botonInscrito4ActionPerformed
 
@@ -233,9 +236,6 @@ public class vistaCurso4 extends javax.swing.JFrame {
     private javax.swing.JLabel banner;
     private javax.swing.JPanel baseCatalogo;
     private javax.swing.JButton botonAtras;
-    private javax.swing.JButton botonInscrito;
-    private javax.swing.JButton botonInscrito1;
-    private javax.swing.JButton botonInscrito2;
     private javax.swing.JButton botonInscrito4;
     private javax.swing.JLabel contenidoDescripcion;
     private javax.swing.JLabel contenidoRequisitos;

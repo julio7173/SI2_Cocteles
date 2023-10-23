@@ -67,7 +67,7 @@ public class vistaCurso6 extends javax.swing.JFrame {
         titulo.setBackground(new java.awt.Color(48, 48, 48));
         titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setText("Curso 6");
+        titulo.setText("<html>Circuitos Electrónicos<html>");
 
         banner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bannerCursos/6.png"))); // NOI18N
         banner.setText("jLabel1");
@@ -76,7 +76,8 @@ public class vistaCurso6 extends javax.swing.JFrame {
         descripcion.setForeground(new java.awt.Color(255, 255, 255));
         descripcion.setText("DESCRIPCIÓN");
 
-        contenidoDescripcion.setText("<html>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<html>");
+        contenidoDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        contenidoDescripcion.setText("<html>Utilizando componentes<p>electrónicos, aprende a diseñar y<p>construir circuitos electrónicos<p>para realizar funciones especificas.<html>");
 
         divisionUno.setBackground(new java.awt.Color(250, 255, 0));
         divisionUno.setForeground(new java.awt.Color(250, 255, 0));
@@ -98,7 +99,8 @@ public class vistaCurso6 extends javax.swing.JFrame {
         requisitos.setForeground(new java.awt.Color(255, 255, 255));
         requisitos.setText("REQUISITOS");
 
-        contenidoRequisitos.setText("<html>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<html>");
+        contenidoRequisitos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        contenidoRequisitos.setText("<html>* NO cursar más de 4 cursos<p>* Tener un correo valido<p>* Habilidades blandas<html>");
 
         divisionDos.setBackground(new java.awt.Color(250, 255, 0));
         divisionDos.setForeground(new java.awt.Color(250, 255, 0));
@@ -119,7 +121,8 @@ public class vistaCurso6 extends javax.swing.JFrame {
         duracion.setForeground(new java.awt.Color(255, 255, 255));
         duracion.setText("DURACIÓN");
 
-        cotenidoDuracion.setText("<html>aaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaa<p>aaaaaaaaaaaaaaa<html>");
+        cotenidoDuracion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cotenidoDuracion.setText("<html>* 4 meses<html>");
 
         javax.swing.GroupLayout baseCatalogoLayout = new javax.swing.GroupLayout(baseCatalogo);
         baseCatalogo.setLayout(baseCatalogoLayout);
@@ -129,20 +132,13 @@ public class vistaCurso6 extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(baseCatalogoLayout.createSequentialGroup()
-                        .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(baseCatalogoLayout.createSequentialGroup()
-                                .addComponent(botonAtras)
-                                .addGap(274, 274, 274)
-                                .addComponent(titulo)
-                                .addGap(170, 170, 170)
-                                .addComponent(botonInscrito6))
-                            .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(50, Short.MAX_VALUE))
+                        .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(baseCatalogoLayout.createSequentialGroup()
                         .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(baseCatalogoLayout.createSequentialGroup()
                                 .addComponent(descripcion)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 131, Short.MAX_VALUE))
                             .addComponent(contenidoDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(divisionUno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,7 +152,14 @@ public class vistaCurso6 extends javax.swing.JFrame {
                         .addGroup(baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(duracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cotenidoDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(81, 81, 81))))
+                        .addGap(81, 81, 81))
+                    .addGroup(baseCatalogoLayout.createSequentialGroup()
+                        .addComponent(botonAtras)
+                        .addGap(170, 170, 170)
+                        .addComponent(titulo)
+                        .addGap(101, 101, 101)
+                        .addComponent(botonInscrito6)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         baseCatalogoLayout.setVerticalGroup(
             baseCatalogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +212,7 @@ public class vistaCurso6 extends javax.swing.JFrame {
 
     private void botonInscrito6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInscrito6ActionPerformed
         this.dispose();
-        formularioInscripcion formulario = new formularioInscripcion();
+        formularioInscrito formulario = new formularioInscrito();
         formulario.setVisible(true);
     }//GEN-LAST:event_botonInscrito6ActionPerformed
 
