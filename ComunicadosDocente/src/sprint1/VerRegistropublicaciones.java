@@ -384,7 +384,14 @@ public class VerRegistropublicaciones extends javax.swing.JFrame {
 
     private void tablaregistroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tablaregistroKeyTyped
         // TODO add your handling code here:
+         int filaSeleccionada = tablaregistro.getSelectedRow();
+    if (filaSeleccionada != -1) {
+        // Obtener el valor seleccionado en la columna "Registro"
+        String valorSeleccionado = (String) tablaregistro.getValueAt(filaSeleccionada, 0);
         
+        // Mostrar el valor seleccionado en el campo "nuevovalor"
+        nuevovalor.setText(valorSeleccionado);
+    }
     }//GEN-LAST:event_tablaregistroKeyTyped
 
     private void tablaregistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaregistroMouseClicked
