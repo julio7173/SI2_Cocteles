@@ -316,7 +316,7 @@ public class vistaCatalogo extends javax.swing.JFrame {
         formulario.setVisible(true);
     }//GEN-LAST:event_botonInscribirseActionPerformed
 
-    private void indicador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador1ActionPerformed
+    public void indicador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador1ActionPerformed
         // Objeto de la calse conexion para manejar la conexion con la base de datos
         conexionBDR con = new conexionBDR();
         // Llama al metodo conectar para obtener la conexion
@@ -343,7 +343,7 @@ public class vistaCatalogo extends javax.swing.JFrame {
         con.desconectar();
     }//GEN-LAST:event_indicador1ActionPerformed
 
-    private void indicador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador2ActionPerformed
+    public void indicador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador2ActionPerformed
         // Objeto de la calse conexion para manejar la conexion con la base de datos
         conexionBDR con = new conexionBDR();
         // Llama al metodo conectar para obtener la conexion
@@ -360,7 +360,6 @@ public class vistaCatalogo extends javax.swing.JFrame {
             }
             
             if(estado){
-                indicador2.doClick();
                 indicador2.setBackground(new Color(255,0,0));
             }
         }catch (SQLException ex) {
@@ -371,7 +370,7 @@ public class vistaCatalogo extends javax.swing.JFrame {
         con.desconectar();
     }//GEN-LAST:event_indicador2ActionPerformed
 
-    private void indicador3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador3ActionPerformed
+    public void indicador3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador3ActionPerformed
         // Objeto de la calse conexion para manejar la conexion con la base de datos
         conexionBDR con = new conexionBDR();
         // Llama al metodo conectar para obtener la conexion
@@ -388,7 +387,6 @@ public class vistaCatalogo extends javax.swing.JFrame {
             }
             
             if(estado){
-                indicador3.doClick();
                 indicador3.setBackground(new Color(255,0,0));
             }
         }catch (SQLException ex) {
@@ -399,7 +397,7 @@ public class vistaCatalogo extends javax.swing.JFrame {
         con.desconectar();
     }//GEN-LAST:event_indicador3ActionPerformed
 
-    private void indicador4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador4ActionPerformed
+    public void indicador4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador4ActionPerformed
         // Objeto de la calse conexion para manejar la conexion con la base de datos
         conexionBDR con = new conexionBDR();
         // Llama al metodo conectar para obtener la conexion
@@ -416,7 +414,6 @@ public class vistaCatalogo extends javax.swing.JFrame {
             }
             
             if(estado){
-                indicador4.doClick();
                 indicador4.setBackground(new Color(255,0,0));
             }
         }catch (SQLException ex) {
@@ -427,7 +424,7 @@ public class vistaCatalogo extends javax.swing.JFrame {
         con.desconectar();
     }//GEN-LAST:event_indicador4ActionPerformed
 
-    private void indicador5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador5ActionPerformed
+    public void indicador5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador5ActionPerformed
         // Objeto de la calse conexion para manejar la conexion con la base de datos
         conexionBDR con = new conexionBDR();
         // Llama al metodo conectar para obtener la conexion
@@ -444,7 +441,6 @@ public class vistaCatalogo extends javax.swing.JFrame {
             }
             
             if(estado){
-                indicador5.doClick();
                 indicador5.setBackground(new Color(255,0,0));
             }
         }catch (SQLException ex) {
@@ -455,7 +451,7 @@ public class vistaCatalogo extends javax.swing.JFrame {
         con.desconectar();
     }//GEN-LAST:event_indicador5ActionPerformed
 
-    private void indicador6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador6ActionPerformed
+    public void indicador6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_indicador6ActionPerformed
         // Objeto de la calse conexion para manejar la conexion con la base de datos
         conexionBDR con = new conexionBDR();
         // Llama al metodo conectar para obtener la conexion
@@ -472,7 +468,6 @@ public class vistaCatalogo extends javax.swing.JFrame {
             }
             
             if(estado){
-                indicador6.doClick();
                 indicador6.setBackground(new Color(255,0,0));
             }
         }catch (SQLException ex) {
@@ -508,12 +503,12 @@ public class vistaCatalogo extends javax.swing.JFrame {
     private javax.swing.JButton botonCurso5;
     private javax.swing.JButton botonCurso6;
     private javax.swing.JButton botonInscribirse;
-    private javax.swing.JButton indicador1;
-    private javax.swing.JButton indicador2;
-    private javax.swing.JButton indicador3;
-    private javax.swing.JButton indicador4;
-    private javax.swing.JButton indicador5;
-    private javax.swing.JButton indicador6;
+    public javax.swing.JButton indicador1;
+    public javax.swing.JButton indicador2;
+    public javax.swing.JButton indicador3;
+    public javax.swing.JButton indicador4;
+    public javax.swing.JButton indicador5;
+    public javax.swing.JButton indicador6;
     private javax.swing.JLabel tituloCurso1;
     private javax.swing.JLabel tituloCurso2;
     private javax.swing.JLabel tituloCurso3;
