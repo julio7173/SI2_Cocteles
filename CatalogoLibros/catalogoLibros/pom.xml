@@ -24,4 +24,15 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>catalogolibros.catalogoLibrosIU</exec.mainClass>
     </properties>
+    <execution>
+                <id>default-cli</id>
+                <goals>
+                    <goal>exec</goal>                            
+                </goals>
+                <configuration>
+                    <executable>${java.home}/bin/java</executable>
+                    <commandlineArgs>${runfx.args}</commandlineArgs>
+                </configuration>
+    </execution>
+    <name>catalogoLibros2</name>
 </project>
