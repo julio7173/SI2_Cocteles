@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ConeccionSql {
 
@@ -28,15 +30,15 @@ public class ConeccionSql {
         }
     }
     
-    public int existeBebida(String bebida) {
+    public int existeEstudiante(String codigo_sis) {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConnection();
 
-        String sql = "SELECT count(nombre) FROM bebida WHERE nombre = ?";
+        String sql = "SELECT count(codigoSis) FROM estudiante WHERE codigoSis = ?";
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, bebida);
+            ps.setString(1, codigo_sis);
 
             rs = ps.executeQuery();
             if (rs.next()) {
@@ -48,22 +50,31 @@ public class ConeccionSql {
         }
     }
     
-    public boolean registrar(ventana pro){
+    public boolean registrar(ventanas pro){
         PreparedStatement ps = null;
         Connection con = getConnection();
         
-        String sql = "INSERT INTO bebida(nombre, popularidad) VALUES (?,?)";
+        String sql = "INSERT INTO estudiante(codigoSis, nombre, apellido, correo) VALUES (?,?,?,?)";
         try{
             ps = con.prepareStatement(sql);
-            ps.setString(1,pro.getNombre());
-            ps.setString(2,pro.getPopularidad());
+            ps.setString(1,pro.getCod_sis());
+            ps.setString(2,pro.getNombre());
+            ps.setString(3,pro.getApellido());
+            ps.setString(4,pro.getCorre());
             ps.execute();
             return true;
         }catch(SQLException ex){
             return false;
         }
     }
-    
+    public boolean esEmail(String correo) {
+
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+´)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        Matcher mather = pattern.matcher(correo);
+        return mather.find();
+
+    }
     public void DesconectarBasedeDatos() {
         try {
             if (conexion != null) {
