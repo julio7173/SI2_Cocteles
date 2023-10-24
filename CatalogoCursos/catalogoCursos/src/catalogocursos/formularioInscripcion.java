@@ -2,8 +2,6 @@ package catalogocursos;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import database.conexionBDR;
-import java.awt.event.ActionEvent;
-import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
@@ -15,6 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 public class formularioInscripcion extends javax.swing.JFrame {
+    
+    private vistaCatalogo vC;
     
     public formularioInscripcion() {
         initComponents();
@@ -234,7 +234,7 @@ public class formularioInscripcion extends javax.swing.JFrame {
     private void campoCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCorreoKeyTyped
         sizeName(campoCorreo, 150, evt);
     }//GEN-LAST:event_campoCorreoKeyTyped
-
+  
     private void botonInscribirseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInscribirseActionPerformed
         // OBtener los datos de los campos
         String nombre = campoNombre.getText().trim();
@@ -258,6 +258,7 @@ public class formularioInscripcion extends javax.swing.JFrame {
             String verIns = "SELECT COUNT(*) FROM inscritos WHERE ci = ? AND nombreCurso = ?";
             String inscribirse = "INSERT INTO inscritos( ci, nombreCurso) VALUES(?, ?)";
             String cupos = "UPDATE cursos SET cupoActual = cupoActual + 1 WHERE nombreCurso = ?";
+            String maximoIns = "SELECT COUNT(*) FROM inscritos WHERE ci = ?";
             // Variables para preparar y ejecutar la sentencia SQL
             PreparedStatement al;
             PreparedStatement ins;
@@ -265,6 +266,7 @@ public class formularioInscripcion extends javax.swing.JFrame {
             PreparedStatement conCupo;
             PreparedStatement verAl;
             PreparedStatement verIn;
+            PreparedStatement maxIns;
             // Variable que almacena el número de filas afectadas por la operación
             int filasAL;
             int filasINS;
@@ -286,9 +288,14 @@ public class formularioInscripcion extends javax.swing.JFrame {
                 verIn.setString(2, curso);
                 ResultSet rs3 = verIn.executeQuery();
                 
+                maxIns = jdbc.prepareStatement(maximoIns);
+                maxIns.setInt(1, Integer.parseInt(ci));
+                ResultSet rs4 = maxIns.executeQuery();
+                
                 int cupoActual = 0;
                 int existe = 0;
                 int inscrito = 0;
+                int maximoCursos = 0;
                 
                 if(rs.next()){
                     cupoActual = rs.getInt("cupoActual");
@@ -299,95 +306,109 @@ public class formularioInscripcion extends javax.swing.JFrame {
                 if(rs3.next()){
                     inscrito = rs3.getInt(1);
                 }
+                if(rs4.next()){
+                    maximoCursos = rs4.getInt(1);
+                }
                 
-                if(cupoActual <= 25){
-                    if(existe == 0){
-                        // Prepara la sentencia SQL con la conexion
-                        al = jdbc.prepareStatement(alumno);
-                        // Asignación de valores usando los campos como parametros de la sentencia SQL
-                        al.setInt(1, Integer.parseInt(ci));
-                        al.setString(2, nombre);
-                        al.setString(3, correo);
-                        // Ejecuta la sentencia SQL - Obtiene número de filas afectadas por la operación
-                        filasAL = al.executeUpdate();
-                        // Cierra el objeto PreparedStatement
-                        al.close();
+                if(cupoActual < 25){
+                    if(maximoCursos < 4){
+                        if(existe == 0){
+                            // Prepara la sentencia SQL con la conexion
+                            al = jdbc.prepareStatement(alumno);
+                            // Asignación de valores usando los campos como parametros de la sentencia SQL
+                            al.setInt(1, Integer.parseInt(ci));
+                            al.setString(2, nombre);
+                            al.setString(3, correo);
+                            // Ejecuta la sentencia SQL - Obtiene número de filas afectadas por la operación
+                            filasAL = al.executeUpdate();
+                            // Cierra el objeto PreparedStatement
+                            al.close();
                         
-                        if(inscrito == 0){
-                            // Prepara la sentencia SQL con la conexion
-                            ins = jdbc.prepareStatement(inscribirse);
-                            // Asignación de valores usando los campos como parametros de la sentencia SQL
-                            ins.setInt(1, Integer.parseInt(ci));
-                            ins.setString(2, curso);
-                            // Ejecuta la sentencia SQL - Obtiene número de filas afectadas por la operación
-                            filasINS = ins.executeUpdate();
-                            // Cierra el objeto PreparedStatement
-                            ins.close();
-                            // Prepara la sentencia SQL con la conexion
-                            cupo = jdbc.prepareStatement(cupos);
-                            // Asignación de valores usando los campos como parametros de la sentencia SQL
-                            cupo.setString(1, curso);
-                            // Ejecuta la sentencia SQL - Obtiene número de filas afectadas por la operación
-                            filasCUR = cupo.executeUpdate();
-                            // Cierra el objeto PreparedStatement
-                            cupo.close();
-                            // Verifica si la operación fue exitosa
-                            if(filasAL > 0 || filasINS > 0 || filasCUR > 0){
-                                // Muestra mensaje - EXITO
-                                JOptionPane.showMessageDialog(this, "Alumno " + nombre + " inscrito con exito al curso " + curso, "Exito", JOptionPane.INFORMATION_MESSAGE);
+                            if(inscrito == 0){
+                                // Prepara la sentencia SQL con la conexion
+                                ins = jdbc.prepareStatement(inscribirse);
+                                // Asignación de valores usando los campos como parametros de la sentencia SQL
+                                ins.setInt(1, Integer.parseInt(ci));
+                                ins.setString(2, curso);
+                                // Ejecuta la sentencia SQL - Obtiene número de filas afectadas por la operación
+                                filasINS = ins.executeUpdate();
+                                // Cierra el objeto PreparedStatement
+                                ins.close();
+                                // Prepara la sentencia SQL con la conexion
+                                cupo = jdbc.prepareStatement(cupos);
+                                // Asignación de valores usando los campos como parametros de la sentencia SQL
+                                cupo.setString(1, curso);
+                                // Ejecuta la sentencia SQL - Obtiene número de filas afectadas por la operación
+                                filasCUR = cupo.executeUpdate();
+                                // Cierra el objeto PreparedStatement
+                                cupo.close();
+                                // Verifica si la operación fue exitosa
+                                if(filasAL > 0 || filasINS > 0 || filasCUR > 0){
+                                    // Muestra mensaje - EXITO
+                                    JOptionPane.showMessageDialog(this, "Alumno " + nombre + " inscrito con exito al curso " + curso, "Exito", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                            }else{
+                                JOptionPane.showMessageDialog(this, "El alumno " + nombre + " ya está inscrito al curso " + curso, "Error", JOptionPane.ERROR_MESSAGE);
                             }
-                        }else{
-                            JOptionPane.showMessageDialog(this, "El alumno " + nombre + " ya está inscrito al curso " + curso, "Error", JOptionPane.ERROR_MESSAGE);
-                        }
                         
+                        }else{
+                            System.out.println("El alumno " + nombre + " ya esta en la lista de alumnos");
+                            if(inscrito == 0){
+                                // Prepara la sentencia SQL con la conexion
+                                ins = jdbc.prepareStatement(inscribirse);
+                                // Asignación de valores usando los campos como parametros de la sentencia SQL
+                                ins.setInt(1, Integer.parseInt(ci));
+                                ins.setString(2, curso);
+                                // Ejecuta la sentencia SQL - Obtiene número de filas afectadas por la operación
+                                filasINS = ins.executeUpdate();
+                                // Cierra el objeto PreparedStatement
+                                ins.close();
+                                // Prepara la sentencia SQL con la conexion
+                                cupo = jdbc.prepareStatement(cupos);
+                                // Asignación de valores usando los campos como parametros de la sentencia SQL
+                                cupo.setString(1, curso);
+                                // Ejecuta la sentencia SQL - Obtiene número de filas afectadas por la operación
+                                filasCUR = cupo.executeUpdate();
+                                // Cierra el objeto PreparedStatement
+                                cupo.close();
+                                // Verifica si la operación fue exitosa
+                                if(filasINS > 0 || filasCUR > 0){
+                                    // Muestra mensaje - EXITO
+                                    JOptionPane.showMessageDialog(this, "Alumno " + nombre + " inscrito con exito al curso " + curso, "Exito", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                            }else{
+                                JOptionPane.showMessageDialog(this, "El alumno " + nombre + " ya está inscrito al curso " + curso, "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
                     }else{
-                        System.out.println("El alumno " + nombre + " ya esta en la lista de alumnos");
-                        if(inscrito == 0){
-                            // Prepara la sentencia SQL con la conexion
-                            ins = jdbc.prepareStatement(inscribirse);
-                            // Asignación de valores usando los campos como parametros de la sentencia SQL
-                            ins.setInt(1, Integer.parseInt(ci));
-                            ins.setString(2, curso);
-                            // Ejecuta la sentencia SQL - Obtiene número de filas afectadas por la operación
-                            filasINS = ins.executeUpdate();
-                            // Cierra el objeto PreparedStatement
-                            ins.close();
-                            // Prepara la sentencia SQL con la conexion
-                            cupo = jdbc.prepareStatement(cupos);
-                            // Asignación de valores usando los campos como parametros de la sentencia SQL
-                            cupo.setString(1, curso);
-                            // Ejecuta la sentencia SQL - Obtiene número de filas afectadas por la operación
-                            filasCUR = cupo.executeUpdate();
-                            // Cierra el objeto PreparedStatement
-                            cupo.close();
-                            // Verifica si la operación fue exitosa
-                            if(filasINS > 0 || filasCUR > 0){
-                                // Muestra mensaje - EXITO
-                                JOptionPane.showMessageDialog(this, "Alumno " + nombre + " inscrito con exito al curso " + curso, "Exito", JOptionPane.INFORMATION_MESSAGE);
-                            }
-                        }else{
-                            JOptionPane.showMessageDialog(this, "El alumno " + nombre + " ya está inscrito al curso " + curso, "Error", JOptionPane.ERROR_MESSAGE);
-                        }
+                        // Si el alumno ya tiene 4 materias inscritas, muestra un mensaje de error y no ejecuta las consultas SQL
+                        JOptionPane.showMessageDialog(this, "El alumno " + nombre + " ya tiene el máximo de materias permitidas (4)", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }else{
                     switch(curso){
                         case "Física General":
-                            indicador1.doClick();
+                            actualizarEstado("Física General");
+                            vC.indicador1.doClick();
                             break;
                         case "Introducción a la Programación":
-                            indicador2.doClick();
+                            actualizarEstado("Introducción a la Programación");
+                            vC.indicador2.doClick();
                             break;
                         case "Sistemas de Información II":
-                            indicador3.doClick();
+                            actualizarEstado("Sistemas de Información II");
+                            vC.indicador3.doClick();
                             break;
                         case "Base de Datos II":
-                            indicador4.doClick();
+                            actualizarEstado("Base de Datos II");
+                            vC.indicador4.doClick();
                             break;
                         case "Mercadotecnia":
-                            indicador5.doClick();
+                            actualizarEstado("Mercadotecnia");
+                            vC.indicador5.doClick();
                             break;
                         case "Circuitos Electrónicos":
-                            indicador6.doClick();
+                            actualizarEstado("Circuitos Electrónicos");
+                            vC.indicador6.doClick();
                             break;
                         default:
                             System.out.println("No existen mas cursos");
@@ -404,6 +425,24 @@ public class formularioInscripcion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonInscribirseActionPerformed
 
+    
+    // Método auxiliar que actualiza el estado de un curso a TRUE
+    public void actualizarEstado(String nombreCurso) {
+        conexionBDR con = new conexionBDR();
+        Connection jdbc = con.conctar();
+        String consulta = "UPDATE cursos SET estado = TRUE WHERE nombreCurso = ?";
+        PreparedStatement ps;
+        try {
+            ps = jdbc.prepareStatement(consulta);
+            ps.setString(1, nombreCurso);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(formularioInscripcion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        con.desconectar();
+    }
+    
     public static void main(String args[]) {
         //Ccambiamos el LookAndFell de la ventana
         try {

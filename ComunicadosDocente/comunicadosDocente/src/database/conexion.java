@@ -2,20 +2,20 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
+
 
 public class conexion {
     // Atributos para la conexion con la base de datos
-<<<<<<<< HEAD:CatalogoLibros/catalogoLibros/src/database/conexion.java
-    String url = "jdbc:mysql://0.tcp.sa.ngrok.io:10755/"; // Direccion de la base de datos
-    String db = "biblioteca"; // NOmbre de la base de datos
-========
     String url = "jdbc:mysql://localhost:3306/"; // Direccion de la base de datos
     String db = "registro"; // NOmbre de la base de datos
->>>>>>>> Julio:ComunicadosDocente/comunicadosDocente/src/database/conexion.java
     String user = "root"; // Nombre de usuario
-    String password = ""; // Contraseña de usuario
+    String password =""; // Contraseña de usuario
     String driver = "com.mysql.cj.jdbc.Driver"; // Controlador JDBC
+    
+    public PreparedStatement pst;
     
     Connection jdbc; // OBjeto que representa la conexion
 
@@ -31,7 +31,6 @@ public class conexion {
             System.out.println("Base de datos conectada");
         } catch (ClassNotFoundException | SQLException e) {
             // Imprime un mensaje - ERROR
-            System.out.println(e.getMessage());
             System.out.println("No se pudo conectar a la base de datos " + db);
         }
         // Devuelve el objeto de conexion
@@ -48,5 +47,17 @@ public class conexion {
             // IMprime un mensaje - ERROR
             System.out.println("Hubo un error al finalizar la conexión " + e);
         }
+    }
+    public ResultSet consultarBD(String query) throws SQLException, Exception{
+        try {
+            System.out.println(query);
+            pst = jdbc.prepareStatement(query);
+            return pst.executeQuery();
+        } catch (Exception e) {
+            throw new Exception("Error al consultar la BD");
+        }
+    }
+    public Connection getConctar() {
+        return jdbc;
     }
 }
